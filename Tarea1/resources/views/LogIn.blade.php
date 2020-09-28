@@ -17,8 +17,8 @@
         }
         .padre {
             background: #003366;
-            height: 500px;
-            width: 500px;
+            height: 600px;
+            width: 600px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,11 +33,20 @@
             <div class="form-group">
                 <span class="abs-center label label-primary fuente" >Ingrese sus Credenciales</span>
                 <br><input type="text" class="fuente form-control" placeholder="Numero de cedula" name="username"/>
+                @error('username')
+                    <br><span style="color:red">Ingrese un nombre de usuario</span><br>
+                @enderror
                 <br><input type="password" class="fuente form-control" placeholder="Contraseña" name="password"/>
+                @error('password')
+                    <br><span style="color:red">Ingrese una contraseña</span><br>
+                @enderror
                 {{@csrf_field()}}
                 <br><div class="abs-center">
                     <button type="submit" class="fuente btn btn-primary regular-button"> Ingresar </button>
                 </div>
+                @if ($error = $errors->login->first('LogIn'))
+                    <br><span style="color:red">{{$error}}</span><br>
+                @endif
             </div>
         </form>
     </div>
