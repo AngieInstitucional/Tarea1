@@ -29,11 +29,12 @@
  </head>
  <body>
     <div class="padre container fuente">
-        <form class="col-12" action="" method="">
+        <form class="col-12" action="login" method="post">
             <div class="form-group">
                 <span class="abs-center label label-primary fuente" >Ingrese sus Credenciales</span>
                 <br><input type="text" class="fuente form-control" placeholder="Numero de cedula" name="username"/>
                 <br><input type="password" class="fuente form-control" placeholder="Contraseña" name="password"/>
+                {{@csrf_field()}}
                 <br><div class="abs-center">
                     <button type="submit" class="fuente btn btn-primary regular-button"> Ingresar </button>
                 </div>
