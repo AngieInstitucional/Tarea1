@@ -26,7 +26,11 @@
             <tbody>
                 @foreach($tramites as $tramite)
                 <tr>
-                    <td>{{ $tramite->id }}</td>
+                    <td>
+                        <a href = "{{ route('informacion', $tramite->id) }}">
+                            {{ $tramite->id }}
+                        </a>
+                    </td>
                     <td>{{ $tramite->tramitesTiposId->descripcion }}</td>
                     <td>{{ $tramite->cliente->nombreCompleto }}</td>
                     <td>{{ $tramite->tramitesTiposId->departamento->nombre }}</td>
