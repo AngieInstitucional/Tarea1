@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
     crossorigin="anonymous">
 
-    <title>Trámite #{{$tramite->id}}</title>
+    <title>Trámite # {{$tramite->id}}</title>
 </head>
 <body>
     <div class = "container">
@@ -106,6 +106,27 @@
         </table>
         </div>
         </div>
+        
+        <div> 
+        <form class="col-12" action="" method="">
+            <div class="form-group">
+                <div>
+                    <select id="tramEstados" name="tramEstados">   
+                        <option value="">--Seleccione el estado--</option>
+                        @foreach($estados as $est)
+                        <option value="{{$est->id}}">{{$est->nombre}}</option>
+                        @endforeach
+                    </select>   
+                </div>
+                <br><div >
+                    <button type="submit" class="fuente btn btn-primary regular-button"> Cambiar Estado </button>
+                </div>
+          
+            </div>
+        </form>
+        </div>     
+        
+
     </div>
 </body>
 </html>

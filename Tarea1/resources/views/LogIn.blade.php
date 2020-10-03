@@ -29,7 +29,7 @@
  </head>
  <body>
     <div class="padre container fuente">
-        <form class="col-12" action="login" method="post">
+        <form class="col-12" action="tramites" method="get">
             <div class="form-group">
                 <span class="abs-center label label-primary fuente" >Ingrese sus Credenciales</span>
                 <br><input type="text" class="fuente form-control" placeholder="Numero de cedula" name="username"/>

@@ -13,6 +13,12 @@ class infoTramiteController extends Controller
         $ID = strval($id);
         $respuesta = Http::get('http://localhost:8989/tramites_registrados/'.$ID);
         $tramite = json_decode($respuesta);
-        return view('infoTramite', compact('tramite'));
+
+        $respuesta2 = Http::get('http://localhost:8989/tramites_estados/');
+        $estados = json_decode($respuesta2);
+
+        return view('infoTramite', compact('estados'),compact('tramite'));
     }
+
+
 }
