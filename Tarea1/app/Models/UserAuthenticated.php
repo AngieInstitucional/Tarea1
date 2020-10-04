@@ -11,7 +11,7 @@ class UserAuthenticated{
 
     public static function getInstance(){
         if(!self::$INSTANCE instanceof self){
-            self::$INSTANCE = new self;
+            self::$INSTANCE = new self();
         }
         return self::$INSTANCE;
     }
