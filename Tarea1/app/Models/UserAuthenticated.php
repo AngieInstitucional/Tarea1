@@ -10,8 +10,8 @@ class UserAuthenticated{
     private function __construct(){}
 
     public static function getInstance(){
-        if(null == self::$INSTANCE){
-            self::$INSTANCE = new UserAuthenticated();
+        if(!self::$INSTANCE instanceof self){
+            self::$INSTANCE = new self;
         }
         return self::$INSTANCE;
     }
