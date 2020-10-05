@@ -11,8 +11,18 @@ class infoTramiteController extends Controller
     public function pagInfoTramite($id){
         
         $ID = strval($id);
-        $respuesta = Http::get('http://localhost:8989/tramites_registrados/'.$ID);
+        $respuesta = Http::withToken(session()->get('token'))->get('http://localhost:8989/tramites_registrados/'.$ID);
         $tramite = json_decode($respuesta);
-        return view('infoTramite', compact('tramite'));
+
+        $respuesta2 = Http::withToken(session()->get('token'))->get('http://localhost:8989/tramites_estados/');
+        $estados = json_decode($respuesta2);
+
+        return view('infoTramite', compact('tramite'), compact('estados'));
     }
+
+    public function editarEstado(){
+        return "Hola";
+    }
+
+
 }
