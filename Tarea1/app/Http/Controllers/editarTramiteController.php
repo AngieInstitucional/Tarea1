@@ -14,21 +14,28 @@ class editarTramiteController extends Controller
             'tramEstados' => 'required'
         ]);
         
-        $respuesta = Http::withToken(session()->get('token'))->get('http://localhost:8989/tramites_estados/'.$request->tramEstados);
+        $respuesta = Http::withHeaders([
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'Authorization' => "bearer ".session()->get('token')
+        ])->get('http://localhost:8989/tramites_estados/'.$request->tramEstados);
         $estado = json_decode($respuesta);
 
         $usuario = session()->get('usuario');
-        
-        $respuesta2 = Http::withToken(session()->get('token'))->
+
+        $respuesta2 = Http::withHeaders([
+            'Content-Type' => 'application/json; charset=UTF-8',
+            'Authorization' => "bearer ".session()->get('token')
+        ])->
         post('http://localhost:8989/tramites_cambio_estado/save/', 
         [
             'tramitesEstadoId' => $estado,
             'usuarioId' => $usuario,
+            'tramitesRegistradosId' => session()->get('tramite'),
         ]);
         
-        if($respuesta2->status() >= 200 && $respuesta2->status() < 300){
+        if($respuesta2->status() == 201){
             $cambio = json_decode($respuesta2);
-            return $cambio;
+            dd($cambio);
         }else{
             return $respuesta2->status();
         }
