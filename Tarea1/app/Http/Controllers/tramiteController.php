@@ -15,6 +15,7 @@ class tramiteController extends Controller
         
         if($respuesta->status() == 200){
             $tramites = json_decode($respuesta->getBody()->getContents());
+            dd($tramites);
             return view('tramite',compact('tramites'));
         }else{
             return ($respuesta->status());

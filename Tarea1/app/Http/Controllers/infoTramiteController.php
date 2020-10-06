@@ -16,12 +16,18 @@ class infoTramiteController extends Controller
 
         $respuesta2 = Http::withToken(session()->get('token'))->get('http://localhost:8989/tramites_estados/');
         $estados = json_decode($respuesta2);
-
+        
         return view('infoTramite', compact('tramite'), compact('estados'));
     }
 
-    public function editarEstado(){
-        return "Hola";
+    public function editarEstado(Request $request){
+        $request->validate([
+            'tramite' => 'required',
+            'tramEstados' => 'required'
+        ]);
+        
+
+        return session()->get('usuario');
     }
 
 

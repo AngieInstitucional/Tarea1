@@ -22,10 +22,12 @@ class LogInController extends Controller
         if($resp->status() == 200){
             $arreglo = json_decode($resp->body(), true);
             $jwt = $arreglo['jwt'];
+            $usuario = $arreglo['usuario'];
             foreach($arreglo['permisos'] as $item){
                 $permisos[] = ($item['permiso']['codigo']);
             }
             session()->put('token', $jwt);
+            session()->put('usuario', $usuario);
             session()->put('permisos', $permisos);
             return redirect('tramites');
 

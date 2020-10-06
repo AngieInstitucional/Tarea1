@@ -36,6 +36,7 @@
                         <h6 class = "p-3 mb-2 bg-secondary text-white">Editar Estado del trámite</h6>
                     </blockquote>
                     <form action = " {{ route('editar') }} " method = "POST">
+                    <input type = "hidden" id = "idTram" name = "tramite" value = {{$tramite->id}}>
                         <div class = "form-group">
                             <div>
                                 <select id = "tramEstados" name = "tramEstados">
@@ -46,6 +47,7 @@
                                 </select>
                             </div>
                         </div>
+                        {{@csrf_field()}}
                         <div>
                             <button type="submit"  class="btn btn-primary">Guardar Estado</button>
                         </div> 
