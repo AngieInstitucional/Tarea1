@@ -18,3 +18,7 @@ Route::get('/infoTramite/{id}',  [infoTramiteController::class, 'pagInfoTramite'
 Route::post("/login", [LogInController::class, 'LogIn']);
 
 Route::post('/editarEstado', [editarTramiteController::class, 'editarEstado'])->name('editar');
+
+Route::get('/tramitesBuscarVarios',  [tramiteController::class, 'buscarTramitesComboBox'])->name('buscar1');
+
+Route::get('/tramitesBuscarFechas',  [tramiteController::class, 'buscarTramitesFechas'])->name('buscar1');
