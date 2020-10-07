@@ -13,7 +13,7 @@ class editarTramiteController extends Controller
             'tramite' => 'required',
             'tramEstados' => 'required'
         ]);
-        
+         
         $respuesta = Http::withHeaders([
             'Content-Type' => 'application/json; charset=UTF-8',
             'Authorization' => "bearer ".session()->get('token')
@@ -35,7 +35,7 @@ class editarTramiteController extends Controller
         
         if($respuesta2->status() == 201){
             $cambio = json_decode($respuesta2);
-            dd($cambio);
+            return view('confirmacion',compact('cambio'));
         }else{
             return $respuesta2->status();
         }

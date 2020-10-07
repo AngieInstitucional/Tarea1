@@ -13,7 +13,10 @@
 <body>
     <div class = "container">
         <blockquote class="blockquote text-center">
-            <h1 class = "p-3 mb-2 bg-info text-white">Trámite número {{$tramite->id}}: {{$tramite->tramitesTiposId->descripcion}}</h1>
+            <h3 class = "p-3 mb-2 bg-info text-white">
+                Trámite número {{$tramite->id}}: {{$tramite->tramitesTiposId->descripcion}}     
+                <br>Estado actual: {{ $estadoActual->tramitesEstadoId->nombre }}</br>
+            </h3>
         </blockquote>
         <blockquote class="blockquote text-center">
             <h3 class = "p-3 mb-2 bg-secondary text-white"> Cliente: {{$tramite->cliente->nombreCompleto}}</h3>
@@ -40,7 +43,6 @@
                         <div class = "form-group">
                             <div>
                                 <select id = "tramEstados" name = "tramEstados">
-                                    <option value = "">--Seleccione el estado--</option>
                                     @foreach($estados as $estado)
                                         <option value = "{{$estado->id}}"> {{ $estado->nombre }}</option>
                                     @endforeach
