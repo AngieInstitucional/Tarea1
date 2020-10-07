@@ -21,4 +21,4 @@ Route::post('/editarEstado', [editarTramiteController::class, 'editarEstado'])->
 
 Route::get('/tramitesBuscarVarios',  [tramiteController::class, 'buscarTramitesComboBox'])->name('buscar1');
 
-Route::get('/tramitesBuscarFechas',  [tramiteController::class, 'buscarTramitesFechas'])->name('buscar1');
+Route::get('/tramitesBuscarFechas',  [tramiteController::class, 'buscarTramitesFechas'])->name('buscar2');

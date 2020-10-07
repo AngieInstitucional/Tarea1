@@ -25,8 +25,8 @@
                 <input type="text" class="form-control" aria-label="Text input with dropdown button" name="txtBuscar">
                 <button type="submit" class="btn btn-primary">Buscar</button>
             </div><br>
-        <form>
-        <form action=" {{ route('editar') }} " method = "POST"> 
+        </form>
+        <form action=" {{ route('buscar2') }} " method = "GET"> 
             <div>
                 <h3>Filtrado por fechas</h3><br>
                 <div class="input-group mb-3">
