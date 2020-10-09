@@ -77,6 +77,9 @@
                 @endif
             </tbody>
         </table>
+        @if ($error = $errors->tramites->first('errores'))
+            <br><span style="color:black">{{$error}}</span><br>
+        @endif
     </div>
 </body>
 </html>

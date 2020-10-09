@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\MessageBag;
 
 class infoTramiteController extends Controller
 {
     public function pagInfoTramite($id){
-        
+        $permisos = session()->get('permisos');
+        if(count($permisos) == 1){
+            if($permisos[0] != 'TRD01'){
+                $validator = new MessageBag(['errores' => ['Usted no posee los permisos necesarios']]);
+                return redirect('tramites')->withErrors($validator, 'tramites');
+            }
+        }
         $ID = strval($id);
         $respuesta = Http::withHeaders([
             'Content-Type' => 'application/json; charset=UTF-8',
