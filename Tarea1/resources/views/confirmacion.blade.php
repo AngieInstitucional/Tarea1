@@ -18,7 +18,7 @@
         </blockquote>
         <ul class="list-group">
             <li class="list-group-item list-group-item-success"> 
-                Trámite: {{ $cambio->tramitesRegistradosId->tramitesTiposId->descripcion }}
+                Trámite: {{ $tramite->tramitesTiposId->descripcion }}
             </li>
             <li class="list-group-item list-group-item-success"> 
                 Usuario que realizó el cambio: {{ $cambio->usuarioId->nombreCompleto }}

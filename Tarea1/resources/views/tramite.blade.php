@@ -47,6 +47,7 @@
                     <th scope="col">Descripcion</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Departamento</th>
+                    <th scope="col">Estado</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,6 +62,7 @@
                         <td>{{ $tramite->tramitesTiposId->descripcion }}</td>
                         <td>{{ $tramite->cliente->nombreCompleto }}</td>
                         <td>{{ $tramite->tramitesTiposId->departamento->nombre }}</td>
+                        <td>{{ $tramite->estados[count($tramite->estados) - 1]->tramitesEstadoId->nombre}}</td>
                     </tr>
                     @endforeach 
                 @else
@@ -73,6 +75,7 @@
                         <td>{{ $tramites->tramitesTiposId->descripcion }}</td>
                         <td>{{ $tramites->cliente->nombreCompleto }}</td>
                         <td>{{ $tramites->tramitesTiposId->departamento->nombre }}</td>
+                        <td>{{ $tramites->estados[count($tramites->estados) - 1]->tramitesEstadoId->nombre}}</td>
                     </tr>
                 @endif
             </tbody>

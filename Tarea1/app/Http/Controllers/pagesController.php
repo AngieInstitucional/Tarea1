@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class pagesController extends Controller
 {
     public function inicio(){
-        return view('welcome');
+        return view('login');
     }
 
     public function logIn(){

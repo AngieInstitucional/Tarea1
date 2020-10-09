@@ -35,7 +35,8 @@ class editarTramiteController extends Controller
         
         if($respuesta2->status() == 201){
             $cambio = json_decode($respuesta2);
-            return view('confirmacion',compact('cambio'));
+            $tramite = session()->get('tramite');
+            return view('confirmacion',compact('cambio'), compact('tramite'));
         }else{
             return $respuesta2->status();
         }
