@@ -23,14 +23,25 @@ class LogInController extends Controller
             $arreglo = json_decode($resp->body(), true);
             $jwt = $arreglo['jwt'];
             $usuario = $arreglo['usuario'];
-            foreach($arreglo['permisos'] as $item){
-                $permisos[] = ($item['permiso']['codigo']);
+            if($arreglo['permisos'] != null){
+                foreach($arreglo['permisos'] as $item){
+                    if($item['permiso']['codigo'] == 'TRA05' || $item['permiso']['codigo'] == 'TRD01'){
+                        $permisos[$item['permiso']['codigo']] = ($item['permiso']['codigo']);
+                    }
+                }
+                if(!is_null($permisos) && $permisos['TRA05'] != null){
+                    session()->put('token', $jwt);
+                    session()->put('usuario', $usuario);
+                    session()->put('permisos', $permisos);
+                    return redirect('tramites');
+                }else{
+                    $validator = new MessageBag(['LogIn' => ['Usted no posee los permisos necesarios']]);
+                    return redirect('login')->withErrors($validator, 'login');
+                }
+            }else{
+                $validator = new MessageBag(['LogIn' => ['Usted no posee ningun permiso']]);
+                return redirect('login')->withErrors($validator, 'login');
             }
-            session()->put('token', $jwt);
-            session()->put('usuario', $usuario);
-            session()->put('permisos', $permisos);
-            return redirect('tramites');
-
         }else{
             $validator = new MessageBag(['LogIn' => ['Las Credenciales no son correctas']]);
             return redirect('login')->withErrors($validator, 'login');
